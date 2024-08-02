@@ -1,24 +1,53 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './Main.css';
 import { assets } from '../../assets/assets';
 import { Context } from '../../context/Context';
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
+import { db, auth } from '../../firebaseConfig'; // Correctly import db and auth
 
-export const Main = () => {
-  const { onSent, recentPrompt, showResults, loading, resultData, input, setInput } = useContext(Context);
+const Main = () => {
+  const { onSent, recentPrompt, showResults, loading, resultData, input, setInput, prevPrompts, setPrevPrompts, handleGoogleSignIn, handleSignOut } = useContext(Context);
+  const [user, setUser] = useState(null); // State for user authentication
+  const [showLogoutMenu, setShowLogoutMenu] = useState(false); // State for logout menu
+
+  
+
+  // Update user state when authentication changes
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <>
       <div className="main">
         <div className="nav">
           <p>ConvoAI</p>
-          <img src={assets.user_icon} alt="user" />
+          {user ? (
+            <div onClick={() => setShowLogoutMenu(!showLogoutMenu)}>
+              <img src={user.photoURL} alt="User Profile" className="user-icon" />
+              {showLogoutMenu && (
+                <div className="logout-menu">
+                  <p onClick={handleSignOut}>Sign Out</p>
+                </div>
+              )}
+            </div>
+          ) : (
+            <img onClick={handleGoogleSignIn} src={assets.user_icon} alt="user" />
+          )}
         </div>
-        
+
         <div className="main-container">
           {!showResults ? (
             <>
               <div className="greet">
-                <p><span>Hello, Linuka</span></p>
+                <p>
+                  <span>
+                    {user ? `Hello, ${user.displayName}` : 'Hello'}
+                  </span>
+                </p>
                 <p>How can I help you today?</p>
               </div>
               <div className="cards">
@@ -44,19 +73,24 @@ export const Main = () => {
             <>
               <div className="result">
                 <div className="result-title">
-                  <img src={assets.user_icon} alt="user" />
+                  {user ? (
+                    <img src={user.photoURL} alt="User Profile" className="user-icon" /> // Use user's photoURL
+                  ) : (
+                    <img src={assets.user_icon} alt="user" />
+                  )}
                   <p>{recentPrompt}</p>
                 </div>
                 <div className="result-data">
                   <img src={assets.gemini_icon} alt="gemini" />
-                  {loading
-                  ?<div className="loader">
-                    <hr/>
-                    <hr/>
-                    <hr/>
-                  </div>
-                  :<p dangerouslySetInnerHTML={{__html: resultData}}></p>
-                  }
+                  {loading ? (
+                    <div className="loader">
+                      <hr />
+                      <hr />
+                      <hr />
+                    </div>
+                  ) : (
+                    <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+                  )}
                 </div>
               </div>
             </>
@@ -68,11 +102,16 @@ export const Main = () => {
                 onChange={(e) => setInput(e.target.value)}
                 value={input}
                 type="text"
-                placeholder="Enter prompt here.."
+                placeholder="Enter a prompt here.."
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    onSent();
+                  }
+                }}
               />
               <div>
-                <img src={assets.gallery_icon} alt="gallery" />
-                <img src={assets.mic_icon} alt="mic" />
+                {/* <img src={assets.gallery_icon} alt="gallery" />
+                <img src={assets.mic_icon} alt="mic" /> */}
                 <img onClick={() => onSent()} src={assets.send_icon} alt="send" />
               </div>
             </div>

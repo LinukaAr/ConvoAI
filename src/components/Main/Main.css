@@ -161,6 +161,28 @@
     animation: loader 3s linear infinite;;
 }
 
+.logout-menu {
+    position: absolute;
+    top: 65px; 
+    right: 10px;
+    background-color: #e6eaf1; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    z-index: 10;
+}
+ 
+.logout-menu p {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 3px;
+    color: #333; 
+    font-size: 14px;
+}
+
+.logout-menu p:hover {
+    background-color: #f0f0f0; 
+}
+  
 @keyframes loader {
     0%{
         background-position: -800px 0px;
@@ -185,10 +207,6 @@
 
     .main-bottom img{
         width: 20px;
-    }
-
-    .search-box{
-        margin-top: 80px;
     }
 
     .search-box div{
