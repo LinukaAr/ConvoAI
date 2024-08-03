@@ -12,6 +12,14 @@ Project Live at: https://convoai-ad808.firebaseapp.com/
 - **User Interface**: Designed a clean and intuitive user interface for seamless interaction with the AI.
 
 ## Technologies Used
+<div align="center">
+
+![React](https://img.shields.io/badge/React-js-%231572B6.svg?style=for-the-badge&logo=React&logoColor=white)
+![Firebase](https://img.shields.io/badge/Firebase-%23FF5733.svg?style=for-the-badge&logo=Firebase&logoColor=white)
+![Gemini AI](https://img.shields.io/badge/Gemini%20AI-%231572B6.svg?style=for-the-badge&logoColor=white)
+
+</div>
+
 
 - **React**: A JavaScript library for building user interfaces.
 - **Firebase**: A suite of services for web and mobile app development, including:
