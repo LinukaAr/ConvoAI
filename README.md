@@ -2,7 +2,7 @@
 
 This project is a user-friendly web application that leverages Google's Gemini AI model to provide conversational AI experiences. Users can interact with the AI through natural language prompts, receiving responses in a dynamic and engaging manner.
 
-Project Live at: convoai-ad808.firebaseapp.com
+Project Live at: https://convoai-ad808.firebaseapp.com/
 
 ## Features
 
@@ -85,5 +85,8 @@ firebase deploy
 Contributions are welcome! Please feel free to open an issue or submit a pull request.
 
 ## License
+<div align = "center">
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)</br>
 This project is licensed under the MIT License.
-Feel free to use this Markdown content in your documentation or README file.
+</div>
