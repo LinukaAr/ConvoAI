@@ -4,6 +4,9 @@ This project is a user-friendly web application that leverages Google's Gemini A
 
 Project Live at: https://convoai-ad808.firebaseapp.com/
 
+![image](https://github.com/user-attachments/assets/8e53b1d2-41bd-4cdf-bb66-64f593ef1af3)
+
+
 ## Features
 
 - **Google Sign-In**: Secure user authentication using Google Sign-In for personalized experiences.
