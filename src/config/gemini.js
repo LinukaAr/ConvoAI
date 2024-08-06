@@ -33,7 +33,7 @@ export default run;
 //     GoogleGenerativeAI,
 // } from "@google/generative-ai";
 
-// const apiKey = "AIzaSyDFlcgYUn-K5v4xiD9ff8rfgx8m5t6GHQY"; // Insert your API key here
+// const apiKey = ""; // Insert your API key here
 // const genAI = new GoogleGenerativeAI(apiKey);
 
 // const modelName = "gemini-1.5-flash"; // Ensure this model name is correct
