@@ -12,7 +12,6 @@ const App = () => {
     </>
   )
 }
-// const apiKey = "AIzaSyDFlcgYUn-K5v4xiD9ff8rfgx8m5t6GHQY"; // Insert your API key here
 
 
 export default App
